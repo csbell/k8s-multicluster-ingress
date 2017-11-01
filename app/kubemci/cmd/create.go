@@ -163,7 +163,7 @@ func runCreate(options *CreateOptions, args []string) error {
 		}
 		addAnnotation(&ing, annotations.StaticIPNameKey, options.StaticIPName)
 	} else if options.StaticIPName != "" && ingAnnotations.StaticIPName() != options.StaticIPName {
-		return fmt.Errorf("the StaticIPName from the provided ingress %q does not match --static-ip=%v. You must pass '--static-ip=%v' to perform this operation.", ingAnnotations.StaticIPName(), options.StaticIPName, ingAnnotations.StaticIPName())
+		return fmt.Errorf("the static-ip annotation key from the provided ingress %q does not match --static-ip=%v. You must pass '--static-ip=%v' to perform this operation.", ingAnnotations.StaticIPName(), options.StaticIPName, ingAnnotations.StaticIPName())
 	}
 
 	cloudInterface, err := cloudinterface.NewGCECloudInterface(options.GCPProject)
